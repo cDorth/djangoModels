@@ -1,0 +1,36 @@
+{% extends "medico/base.html" %}
+{% block title %}Lista de Médicos{% endblock %}
+
+{% block content %}
+<h2>Lista de Médicos</h2>
+<a href="{% url 'medico_create' %}" class="btn btn-primary mb-3">Novo Médico</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CRM</th>
+            <th>Email</th>
+            <th>Especialidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for medico in medicos %}
+        <tr>
+            <td>{{ medico.nome }}</td>
+            <td>{{ medico.crm }}</td>
+            <td>{{ medico.email }}</td>
+            <td>{{ medico.especialidade.nome }}</td>
+            <td>
+                <a href="{% url 'medico_update' medico.id_medico %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'medico_delete' medico.id_medico %}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Nenhum médico cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

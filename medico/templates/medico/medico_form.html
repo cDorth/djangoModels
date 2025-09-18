@@ -1,0 +1,12 @@
+{% extends "medico/base.html" %}
+{% block title %}Cadastro de Médico{% endblock %}
+
+{% block content %}
+<h2>Cadastro de Médico</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'medico_list' %}" class="btn btn-secondary">Voltar</a>
+</form>
+{% endblock %}

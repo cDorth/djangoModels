@@ -1,0 +1,11 @@
+{% extends "medico/base.html" %}
+{% block title %}Confirmação de Exclusão{% endblock %}
+
+{% block content %}
+<h2>Tem certeza que deseja excluir {{ tipo }} "{{ object }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a href="javascript:history.back()" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
